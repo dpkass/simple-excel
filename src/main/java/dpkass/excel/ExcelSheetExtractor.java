@@ -11,12 +11,12 @@ import dpkass.datacontainers.SimpleColumns;
 import dpkass.datacontainers.SimpleRange;
 import dpkass.datacontainers.SimpleRow;
 import dpkass.datacontainers.SimpleRows;
-import dpkass.Extractor;
+import dpkass.SheetExtractor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
-public class SheetExtractor implements Extractor {
+public class ExcelSheetExtractor implements SheetExtractor {
 
   Sheet sheet;
 
@@ -29,7 +29,7 @@ public class SheetExtractor implements Extractor {
 
   boolean vertical;
 
-  public SheetExtractor(Sheet sheet) {
+  public ExcelSheetExtractor(Sheet sheet) {
     this.sheet = sheet;
   }
 

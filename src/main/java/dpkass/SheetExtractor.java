@@ -5,7 +5,7 @@ import dpkass.datacontainers.SimpleColumns;
 import dpkass.datacontainers.SimpleRow;
 import dpkass.datacontainers.SimpleRows;
 
-public interface Extractor {
+public interface SheetExtractor {
 
   SimpleRow singleRow(int index);
 
