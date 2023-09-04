@@ -15,7 +15,7 @@ public class AttributeInfo {
   private boolean optional = true;
 
 
-  private final Predicate defaultSingletonValidator = o -> optional();
+  private final Predicate defaultSingletonValidator = o -> o != null || optional();
 
   private Predicate singletonValidator = defaultSingletonValidator;
   private Function singletonCreator = Function.identity();
