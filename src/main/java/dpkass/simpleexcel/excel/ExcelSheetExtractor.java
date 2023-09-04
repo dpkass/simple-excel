@@ -6,12 +6,12 @@ import static org.apache.poi.ss.usermodel.CellType.STRING;
 import static org.apache.poi.ss.usermodel.Row.MissingCellPolicy.CREATE_NULL_AS_BLANK;
 
 import dpkass.simpleexcel.SheetExtractor;
-import dpkass.simpleexcel.core.base.SimpleCell;
 import dpkass.simpleexcel.core.SimpleColumn;
 import dpkass.simpleexcel.core.SimpleColumns;
 import dpkass.simpleexcel.core.SimpleRange;
 import dpkass.simpleexcel.core.SimpleRow;
 import dpkass.simpleexcel.core.SimpleRows;
+import dpkass.simpleexcel.core.base.SimpleCell;
 import java.util.stream.StreamSupport;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -19,7 +19,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 
 public class ExcelSheetExtractor implements SheetExtractor {
 
-  Sheet sheet;
+  final Sheet sheet;
 
   Row currentRow;
   Cell currentCell;
@@ -27,8 +27,8 @@ public class ExcelSheetExtractor implements SheetExtractor {
   int currentRowIndex;
   int currentColumnIndex;
 
-  int maxRowIndex;
-  int maxColumnIndex;
+  final int maxRowIndex;
+  final int maxColumnIndex;
 
   boolean vertical;
 
@@ -38,7 +38,7 @@ public class ExcelSheetExtractor implements SheetExtractor {
     this.maxColumnIndex = StreamSupport.stream(sheet.spliterator(), false)
                                        .mapToInt(Row::getLastCellNum)
                                        .max()
-                                       .getAsInt();
+                                       .orElse(0);
   }
 
   @Override

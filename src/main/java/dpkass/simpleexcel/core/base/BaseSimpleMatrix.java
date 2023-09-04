@@ -17,6 +17,6 @@ public class BaseSimpleMatrix<T extends SimpleRange> extends ArrayList<T>
   }
 
   public BaseSimpleMatrix<T> subList(int from, int to) {
-    return new BaseSimpleMatrix<T>(super.subList(from, to));
+    return new BaseSimpleMatrix<>(super.subList(from, to));
   }
 }
