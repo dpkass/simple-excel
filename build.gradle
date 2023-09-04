@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group = 'dpkass'
@@ -10,7 +10,15 @@ repositories {
     mavenCentral()
 }
 
+shadowJar {
+    archiveBaseName.set('simple-excel')
+}
+
+
 dependencies {
+    // excel
+    implementation 'org.apache.poi:poi-ooxml:5.2.3'
+
     // test
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
