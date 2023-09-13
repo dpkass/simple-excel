@@ -1,8 +1,6 @@
 package dpkass.simpleexcel.excel;
 
 import static org.apache.poi.ss.usermodel.CellType.BLANK;
-import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
-import static org.apache.poi.ss.usermodel.CellType.STRING;
 import static org.apache.poi.ss.usermodel.Row.MissingCellPolicy.CREATE_NULL_AS_BLANK;
 
 import dpkass.simpleexcel.SheetExtractor;
@@ -100,12 +98,10 @@ public class ExcelSheetExtractor implements SheetExtractor {
     return columns(sheet.getFirstRowNum(), sheet.getLastRowNum());
   }
 
-
-  // cell transform
-  private SimpleCell toSimpleCell(Cell cell) {
+  public SimpleCell toSimpleCell(Cell cell) {
     return switch (cell.getCellType()) {
-      case STRING -> new SimpleCell(cell.getStringCellValue(), STRING);
-      case NUMERIC -> new SimpleCell(cell.getNumericCellValue(), NUMERIC);
+      case STRING -> SimpleCell.of(cell.getStringCellValue());
+      case NUMERIC -> SimpleCell.of(cell.getNumericCellValue());
       default -> SimpleCell.blank();
     };
   }
